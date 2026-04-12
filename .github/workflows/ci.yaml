@@ -2,6 +2,7 @@ name: Pipeline de Calidad Retail App
 
 # Sección 1: Triggers
 # ¿cuándo corre este workflow?
+# se va a ejecutar cada vez que haya un push a la rama main
 on:
   push:
     branches: ["main"]
@@ -12,10 +13,7 @@ jobs:
   build-and-test:
     #Runner = maquina virtual donde corre
     runs-on: ubuntu-latest
-    env:
-      DATABASE_ENGINE: ${{ secrets.DATABASE_ENGINE }}
-      DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-
+    
     #Sección 3: Steps
     #Pasos secuenciales (Ejecutan en orden)
     steps:
@@ -23,12 +21,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         # uses = usa una action predefinida de Github (el runner descarga tu codigo)
-
-      - name: Ejecutar Comando SH
-        run:
-          echo "Ejecutando comando SH simulado..."
-          echo "Database Engine: $DATABASE_ENGINE"
-          echo "Database Password: $DATABASE_PASSWORD"
         
       #Step 2: Análisis de calidad
       - name: Simular análisis de calidad
