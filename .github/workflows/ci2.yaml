@@ -4,7 +4,7 @@ name: Pipeline de Calidad Retail App
 # ¿cuándo corre este workflow?
 on:
   push:
-    branches: ["dev"]
+    branches: ["prod"]
 
 # Sección 2: Jobs
 # ¿qué tareas ejecutar?
